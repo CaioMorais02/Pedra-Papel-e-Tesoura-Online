@@ -15,7 +15,7 @@ class Game:
         """
         return self.moves[p]
     
-    def player(self, player, move):
+    def play(self, player, move):
         self.moves[player] = move
         if player == 0:
             self.p1Jogou = True
@@ -29,22 +29,22 @@ class Game:
         return self.p1Jogou and self.p2Jogou
     
     def vencedor(self):
-        p1 = self.moves[0].upper()[0]
-        p2 = self.moves[1].upper()[0]
+        p1 = self.moves[0]
+        p2 = self.moves[1]
 
         # PD = Pedra | T = Tesoura | PP = Papel | 0 jogador 1 vence | 1 jogador 2 vence
         winner = -1
-        if p1 == "PD" and p2 == "T":
+        if p1 == "Pedra" and p2 == "Tesoura":
             winner = 0
-        elif p1 == "T" and p2 == "PD":
+        elif p1 == "Tesoura" and p2 == "Pedra":
             winner = 1
-        elif p1 == "PP"  and p2 == "PD":
+        elif p1 == "Papel"  and p2 == "Pedra":
             winner = 0
-        elif p1 == "PD" and p2 == "PP":
+        elif p1 == "Pedra" and p2 == "Papel":
             winner = 1
-        elif p1 == "T" and p2 == "PP":
+        elif p1 == "Tesoura" and p2 == "Papel":
             winner = 0
-        elif p1 == "PP" and p2 == "T":
+        elif p1 == "Papel" and p2 == "Tesoura":
             winner = 1
 
         return winner
